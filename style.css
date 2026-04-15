@@ -1,0 +1,480 @@
+:root {
+    --primary: #2563eb;           
+    --primary-dark: #0d5c55;
+    --secondary: #FFFFFF;         
+    --bg-light: #f9fafb;
+    --text-dark: #111827;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+    --radius: 1rem;              
+    --shadow-md: 0 6px 12px -2px rgb(0 0 0 / 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+header {
+    background: white;
+    box-shadow: var(--shadow-sm);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+header h1 { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+nav a:hover { color: var(--primary); }
+
+main {
+    max-width: 1280px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Карточки туров */
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.tour-card {
+    padding: 1.8rem;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid #f0f0f0;
+}
+.tour-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+.tour-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary); }
+.tour-card p { color: var(--text-light); margin-bottom: 0.5rem; }
+.btn, .btn-primary, .btn-add {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+.btn { background: white; color: var(--primary); border: 1px solid var(--primary); }
+.btn:hover { background: var(--primary); color: white; }
+.btn-primary, .btn-add {
+    background: var(--primary);
+    color: white;
+}
+.btn-primary:hover, .btn-add:hover { background: var(--primary-dark); }
+
+/* Формы */
+.form-group { margin-bottom: 1.25rem; }
+label { display: block; margin-bottom: 0.25rem; font-weight: 500; color: var(--text-dark); }
+input, select, textarea {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background: white;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+button { cursor: pointer; }
+
+/* Таблицы */
+.data-table {
+    width: 100%;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+.data-table th {
+    background: #f1f5f9;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.actions a { margin-right: 0.5rem; text-decoration: none; }
+
+/* Админка */
+.admin-layout { display: flex; gap: 2rem; }
+.admin-sidebar {
+    width: 220px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    height: fit-content;
+}
+.admin-sidebar ul { list-style: none; }
+.admin-sidebar li { margin-bottom: 0.25rem; }
+.admin-sidebar a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.admin-sidebar a:hover, .admin-sidebar a.active {
+    background: var(--primary);
+    color: white;
+}
+.admin-content { flex: 1; }
+.stats { display: flex; gap: 1.5rem; margin-top: 2rem; }
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    flex: 1;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.pagination { margin-top: 1rem; display: flex; gap: 0.5rem; }
+.pagination a {
+    padding: 0.4rem 0.8rem;
+    background: white;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+}
+.pagination a.active { background: var(--primary); color: white; }
+
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+.filters select, .filters input {
+    width: auto;
+    min-width: 180px;
+}
+.filters button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: var(--radius);
+}
+
+/* Карточки заказов */
+.order-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .admin-layout { flex-direction: column; }
+    .admin-sidebar { width: 100%; }
+    header { flex-direction: column; gap: 0.5rem; }
+    nav a { margin: 0 0.75rem; }
+}
+
+/* Стили для формы входа в админку */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.admin-login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 400px;
+}
+.admin-login-form h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+/* Админ-дашборд */
+.admin-dashboard h2 {
+    margin-bottom: 1.5rem;
+}
+.quick-links {
+    margin-top: 2rem;
+}
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.quick-link {
+    background: white;
+    padding: 1rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+}
+.quick-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Заголовок таблицы */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+.null-value {
+    color: var(--text-light);
+    font-style: italic;
+}
+.table-info {
+    margin-top: 1rem;
+    color: var(--text-light);
+}
+.btn-edit, .btn-delete {
+    text-decoration: none;
+    margin: 0 0.25rem;
+    font-size: 1.1rem;
+}
+.btn-edit:hover, .btn-delete:hover {
+    opacity: 0.7;
+}
+.error {
+    color: var(--danger);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Статистика */
+.stat-icon {
+    font-size: 2rem;
+}
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ============================================ */
+/* Отступ между турами и подвалом с отзывами */
+/* ============================================ */
+.tours-section {
+    margin-bottom: 3rem;
+}
+
+/* ============================================ */
+/* Блок отзывов в подвале сайта (отдельный цвет) */
+/* ============================================ */
+.reviews-section {
+    margin-top: 2rem;
+    padding: 3.5rem 0;
+    background: #f0f4f8;  /* Светло-серо-голубой фон */
+    border-top: 1px solid #d1d9e6;
+    border-bottom: 1px solid #d1d9e6;
+}
+
+.reviews-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: #1e293b;
+    position: relative;
+}
+
+.reviews-section h2:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #2563eb;
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.review-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: #2563eb;
+}
+
+.review-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.review-author {
+    font-weight: 700;
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+.review-tour {
+    color: #64748b;
+    font-size: 0.85rem;
+    background: #f8fafc;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.review-rating {
+    margin-left: auto;
+    color: #fbbf24;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    flex: 1;
+    margin: 0.75rem 0;
+    line-height: 1.7;
+    color: #1e293b;
+    font-style: italic;
+    quotes: "\201C" "\201D";
+}
+
+.review-text:before {
+    content: "\201C";
+    font-size: 1.5rem;
+    color: #2563eb;
+    opacity: 0.4;
+    margin-right: 3px;
+}
+
+.review-text:after {
+    content: "\201D";
+    font-size: 1.5rem;
+    color: #2563eb;
+    opacity: 0.4;
+    margin-left: 3px;
+    vertical-align: bottom;
+}
+
+.review-date {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+    text-align: right;
+}
+
+.no-reviews {
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+    padding: 2rem;
+}
+
+/* Адаптив для отзывов */
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 2rem 0;
+    }
+    
+    .reviews-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .review-card {
+        padding: 1.2rem;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .review-rating {
+        margin-left: 0;
+    }
+}
